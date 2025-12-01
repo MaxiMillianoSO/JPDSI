@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="jakarta.faces.facelets"
+      xmlns:h="jakarta.faces.html"
+      xmlns:f="jakarta.faces.core">
+
+    <f:metadata>
+        <f:viewParam name="z" value="#{zwierzeEditGETBB.zwierze.id}"
+                     converterMessage="Nieoczekiwany błąd"/>
+        <f:event type="preRenderView" listener="#{zwierzeEditGETBB.onLoad()}" />
+    </f:metadata>
+
+    <h:head>
+        <meta charset="utf-8"/>
+        <title>projekt6.1</title>
+    </h:head>
+
+    <h:body style="background-color: #eee; margin: 0.5em;">
+
+        <p:panel toggleable="true" header="Edycja rekordu">
+
+            <h:form rendered="#{zwierzeEditGETBB.zwierze != null}">
+                <h:panelGrid columns="3" cellpadding="5">
+
+                    <!-- GATUNEK -->
+                    <h:outputLabel for="z-gatunek" value="gatunek:" />
+                    <p:inputText id="z-gatunek"
+                                 value="#{zwierzeEditGETBB.zwierze.gatunek}"
+                                 required="true"
+                                 requiredMessage="Podaj gatunek"
+                                 validatorMessage="co najwyżej 40 znaków">
+                        <f:validateLength maximum="40" />
+                    </p:inputText>
+                    <p:message for="z-gatunek" display="icon"/>
+
+                    <!-- IMIĘ -->
+                    <h:outputLabel for="z-imie" value="imię:" />
+                    <p:inputText id="z-imie"
+                                 value="#{zwierzeEditGETBB.zwierze.imie}"
+                                 required="true"
+                                 requiredMessage="Podaj imię"
+                                 validatorMessage="co najwyżej 40 znaków">
+                        <f:validateLength maximum="40" />
+                    </p:inputText>
+                    <p:message for="z-imie" display="icon"/>
+
+                    <!-- RASA -->
+                    <h:outputLabel for="z-rasa" value="rasa:" />
+                    <p:inputText id="z-rasa"
+                                 value="#{zwierzeEditGETBB.zwierze.rasa}"
+                                 required="true"
+                                 requiredMessage="Podaj rasę"
+                                 validatorMessage="co najwyżej 40 znaków">
+                        <f:validateLength maximum="40" />
+                    </p:inputText>
+                    <p:message for="z-rasa" display="icon"/>
+
+                    <!-- WIEK -->
+                    <h:outputLabel for="z-wiek" value="wiek:" />
+                    <p:inputText id="z-wiek"
+                                 value="#{zwierzeEditGETBB.zwierze.wiek}"
+                                 required="true"
+                                 requiredMessage="Podaj wiek"
+                                 converterMessage="Podaj liczbę (np. 5)">
+                        <f:validateLongRange minimum="0" maximum="200"/>
+                    </p:inputText>
+                    <p:message for="z-wiek" display="icon"/>
+
+                </h:panelGrid>
+
+                <p:messages id="msgs" />
+
+                <p:commandButton value="Zapisz"
+                                 action="#{zwierzeEditGETBB.saveData()}"
+                                 style="margin-right: 1em;"
+                                 update="@form" />
+
+                <p:button value="Anuluj" outcome="zwierzeList" />
+
+            </h:form>
+
+        </p:panel>
+
+    </h:body>
+</html>
