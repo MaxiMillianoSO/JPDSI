@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="jakarta.faces.facelets"
+      xmlns:h="jakarta.faces.html"
+      xmlns:f="jakarta.faces.core">
+
+<ui:composition template="/templates/login-template.xhtml">
+
+    <ui:define name="content">
+
+        <h:form>
+            <h:panelGrid columns="2" cellpadding="5" styleClass="bottom-space">
+
+                <h:outputLabel value="Login:" for="login"/>
+                <h:inputText id="login" value="#{registerBB.username}"
+                             required="true" requiredMessage="Wpisz login"/>
+
+                <h:outputLabel value="Email:" for="email"/>
+                <h:inputText id="email" value="#{registerBB.email}"
+                             required="true" requiredMessage="Wpisz email"/>
+
+                <h:outputLabel value="Hasło:" for="pass"/>
+                <h:inputSecret id="pass" value="#{registerBB.password}"
+                               required="true" requiredMessage="Wpisz hasło"/>
+
+            </h:panelGrid>
+
+            <h:messages />
+
+            <h:commandButton value="Zarejestruj" action="#{registerBB.register()}"/>
+
+            <br/><br/>
+            <h:link value="Masz konto? Zaloguj się" outcome="login" />
+
+        </h:form>
+
+    </ui:define>
+
+</ui:composition>
+</html>

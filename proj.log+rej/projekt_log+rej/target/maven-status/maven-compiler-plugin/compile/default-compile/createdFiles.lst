@@ -1,0 +1,10 @@
+com\jpdsii\dao\UserDAO.class
+com\jpdsii\entities\User.class
+com\jpdsiicourse\zwierze\RegisterBB.class
+com\jpdsiicourse\zwierze\AuthBB.class
+com\jpdsiicourse\zwierze\ZwierzeEditBB.class
+com\jpdsiicourse\zwierze\ZwierzeEditGETBB.class
+com\jpdsii\dao\ZwierzeDAO.class
+com\jpdsii\entities\Zwierze.class
+com\jpdsiicourse\zwierze\ZwierzeListBB.class
+com\jpdsii\entities\Role.class

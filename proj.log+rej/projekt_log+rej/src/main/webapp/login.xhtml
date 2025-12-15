@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="jakarta.faces.facelets"
+      xmlns:h="jakarta.faces.html"
+      xmlns:f="jakarta.faces.core">
+
+<ui:composition template="/templates/login-template.xhtml">
+
+    <ui:define name="content">
+
+        <h:form>
+
+            <h:panelGrid columns="2" cellpadding="5" styleClass="bottom-space">
+
+                <h:outputLabel for="login" value="Login:" />
+                <h:inputText id="login"
+                             value="#{authBB.username}"
+                             required="true"
+                             requiredMessage="Podaj login" />
+
+                <h:outputLabel for="pass" value="Hasło:" />
+                <h:inputSecret id="pass"
+                               value="#{authBB.password}"
+                               required="true"
+                               requiredMessage="Podaj hasło" />
+            </h:panelGrid>
+
+            <h:messages />
+
+            <h:commandButton value="Zaloguj"
+                             action="#{authBB.login}" />
+
+            <br/><br/>
+            <h:link value="Nie masz konta? Zarejestruj się" outcome="register" />
+
+        </h:form>
+
+    </ui:define>
+
+</ui:composition>
+
+</html>
+
