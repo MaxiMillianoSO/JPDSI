@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="jakarta.faces.facelets"
+      xmlns:h="jakarta.faces.html"
+      xmlns:f="jakarta.faces.core">
+<f:view locale="#{LanguageBB.locale}">
+    <h:head>
+        <meta charset="utf-8" />
+        <title>Lista zwierząt</title>
+    </h:head>
+
+    <h:body style="background-color: #eee; margin: 0.5em;">
+        <h:form style="float:right">
+            <p:commandButton value="PL" action="#{languageBB.setPolish}" update="@all"/>
+            <p:commandButton value="ENG" action="#{languageBB.setEnglish}" update="@all" />
+             <p:commandButton value="UA" action="#{languageBB.setUkrainian}" update="@all" />
+              <p:commandButton value="#{msg['menu.logout']}"
+                         action="#{authBB.logout}" />
+        </h:form>
+       
+
+
+        <p:panel header="#{msg['panel.search']}" toggleable="true" collapsed="true"
+                 style="margin-bottom: 1em;">
+            <h:form>
+                <h:panelGrid columns="2" cellpadding="5">
+                    <h:outputLabel value="#{msg['label.search.imie']}:" />
+                    <p:inputText value="#{zwierzeListBB.imie}" />
+
+                    <h:outputLabel value="#{msg['label.gatunek']}:" />
+                    <p:inputText value="#{zwierzeListBB.gatunek}" />
+
+                    <p:commandButton value="#{msg['button.search']}" update="form-table" />
+                </h:panelGrid>
+            </h:form>
+        </p:panel>
+
+        <p:messages />
+
+        <h:form id="form-table" style="margin-bottom:1em;">
+
+            <p:commandButton value="#{msg['button.add']}" style="margin-bottom:1em;"
+                             action="#{zwierzeListBB.newZwierze()}"/>
+
+            <p:dataTable value="#{zwierzeListBB.list}" var="z">
+
+                <p:column>
+                    <f:facet name="header">#{msg['label.gatunek']}</f:facet>
+                    <h:outputText value="#{z.gatunek}" />
+                </p:column>
+
+                <p:column>
+                    <f:facet name="header">#{msg['label.gatunek']}</f:facet>
+                    <h:outputText value="#{z.imie}" />
+                </p:column>
+
+                <p:column>
+                    <f:facet name="header">#{msg['label.rasa']}</f:facet>
+                    <h:outputText value="#{z.rasa}" />
+                </p:column>
+
+                <p:column>
+                    <f:facet name="header">#{msg['label.wiek']}</f:facet>
+                    <h:outputText value="#{z.wiek}" />
+                </p:column>
+
+                <p:column>
+                    <f:facet name="header">#{msg['table.opt']}</f:facet>
+
+                    <p:commandButton value="#{msg['button.edit']}"
+                                     action="#{zwierzeListBB.editZwierze(z)}"
+                                     style="margin-right: 0.5em"/>
+
+                    <p:commandButton value="#{msg['button.delete']}"
+                                     action="#{zwierzeListBB.deleteZwierze(z)}"
+                                     update="@form"
+                                     style="margin-right: 0.5em" />
+
+
+
+                </p:column>
+
+            </p:dataTable>
+        </h:form>
+
+    </h:body>
+    </f:view>
+</html>

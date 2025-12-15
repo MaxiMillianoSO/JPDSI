@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="jakarta.faces.facelets"
+      xmlns:h="jakarta.faces.html"
+      xmlns:f="jakarta.faces.core">
+<f:view locale="#{LanguageBB.locale}">
+    <f:metadata>
+        <f:viewAction action="#{zwierzeEditBB.onLoad()}" />
+    </f:metadata>
+
+    <h:head>
+        <meta charset="utf-8"/>
+        <title>#{msg['title.zwierze.edit']}</title>
+    </h:head>
+
+    <h:body style="background-color: #eee; margin: 0.5em;">
+
+        <p:panel toggleable="true" header="#{msg['panel.zwierze.edit']}">
+
+            <h:form rendered="#{zwierzeEditBB.zwierze != null}">
+                <h:panelGrid columns="3" cellpadding="5">
+
+                    <h:outputLabel for="z-gatunek" value="#{msg['label.gatunek']}:" />
+                    <p:inputText id="z-gatunek" value="#{zwierzeEditBB.zwierze.gatunek}"
+                                 required="true" requiredMessage="#{msg['msg.gatunek.required']}"
+                                 validatorMessage="#{msg['msg.max40']}">
+                        <f:validateLength maximum="40" />
+                    </p:inputText>
+                    <p:message for="z-gatunek" display="icon"/>
+
+                    <h:outputLabel for="z-imie" value="#{msg['label.imie']}:" />
+                    <p:inputText id="z-imie" value="#{zwierzeEditBB.zwierze.imie}"
+                                 required="true" requiredMessage="#{msg['msg.imie.required']}"
+                                 validatorMessage="#{msg['msg.max40']}">
+                        <f:validateLength maximum="40" />
+                    </p:inputText>
+                    <p:message for="z-imie" display="icon"/>
+
+                    <h:outputLabel for="z-rasa" value="#{msg['label.rasa']}:" />
+                    <p:inputText id="z-rasa" value="#{zwierzeEditBB.zwierze.rasa}"
+                                 required="true" requiredMessage="#{msg['msg.rasa.required']}"
+                                 validatorMessage="#{msg['msg.max40']}">
+                        <f:validateLength maximum="40" />
+                    </p:inputText>
+                    <p:message for="z-rasa" display="icon"/>
+
+                    <h:outputLabel for="z-wiek" value="#{msg['label.wiek']}:" />
+                    <p:inputText id="z-wiek" value="#{zwierzeEditBB.zwierze.wiek}"
+                                 required="true" requiredMessage="#{msg['msg.wiek.required']}"
+                                 converterMessage="#{msg['msg.wiek.number']}">
+                        <f:validateLongRange minimum="0" maximum="100"/>
+                    </p:inputText>
+                    <p:message for="z-wiek" display="icon"/>
+
+                </h:panelGrid>
+
+                <p:messages id="msgs" />
+
+                <p:commandButton value="#{msg['button.save']}" action="#{zwierzeEditBB.saveData()}"
+                                 style="margin-right: 1em;" update="@form" />
+
+                <p:button value="#{msg['button.cancel']}" outcome="zwierzeList" />
+            </h:form>
+
+        </p:panel>
+
+    </h:body>
+</f:view>
+</html>

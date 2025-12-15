@@ -1,0 +1,32 @@
+package com.jpdsiicourse.zwierze;
+
+import java.io.Serializable;
+import java.util.Locale;
+
+import jakarta.enterprise.context.SessionScoped;
+import jakarta.faces.context.FacesContext;
+import jakarta.inject.Named;
+
+@Named
+@SessionScoped
+public class LanguageBB implements Serializable {
+
+    private static final long serialVersionUID = 1L;
+
+    private Locale locale = Locale.ENGLISH; 
+
+    public void setPolish() {
+        locale = new Locale("pl");
+    }
+
+    public void setEnglish() {
+        locale = Locale.ENGLISH;
+    }
+    public void setUkrainian() {
+        locale = new Locale("uk");
+    }
+
+    public Locale getLocale() {
+        return locale;
+    }
+}

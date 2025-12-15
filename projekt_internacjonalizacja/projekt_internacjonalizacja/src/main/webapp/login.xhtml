@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="jakarta.faces.facelets"
+      xmlns:h="jakarta.faces.html"
+      xmlns:f="jakarta.faces.core">
+<f:view locale="#{LanguageBB.locale}">
+<ui:composition template="/templates/login-template.xhtml">
+
+    <ui:define name="content">
+
+        <h:form>
+
+            <h:panelGrid columns="2" cellpadding="5" styleClass="bottom-space">
+
+                <h:outputLabel for="login" value="#{msg['label.login']}:" />
+                <h:inputText id="login"
+                             value="#{authBB.username}"
+                             required="true"
+                             requiredMessage="#{msg['msg.login.required']}" />
+
+                <h:outputLabel for="pass" value="#{msg['label.password']}:" />
+                <h:inputSecret id="pass"
+                               value="#{authBB.password}"
+                               required="true"
+                               requiredMessage="#{msg['msg.password.required']}" />
+            </h:panelGrid>
+
+            <h:messages />
+
+            <h:commandButton value="#{msg['button.login']}"
+                             action="#{authBB.login}" />
+
+            <br/><br/>
+            <h:link value="#{msg['link.register']}" outcome="register" />
+
+        </h:form>
+
+    </ui:define>
+
+</ui:composition>
+</f:view>
+</html>
+
