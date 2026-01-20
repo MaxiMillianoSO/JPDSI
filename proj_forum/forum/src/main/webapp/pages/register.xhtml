@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="jakarta.faces.html"
+      xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+    <title>Register</title>
+</h:head>
+
+<h:body>
+
+    <h:form style="width:350px;margin:100px auto;text-align:center">
+
+        <h2>Create account</h2>
+
+        <p:inputText value="#{authBB.firstName}"
+                     placeholder="First name"
+                     required="true"
+                     style="width:100%"/>
+
+        <br/><br/>
+
+        <p:inputText value="#{authBB.lastName}"
+                     placeholder="Last name"
+                     required="true"
+                     style="width:100%"/>
+
+        <br/><br/>
+
+        <p:inputText value="#{authBB.username}"
+                     placeholder="Username"
+                     required="true"
+                     style="width:100%"/>
+
+        <br/><br/>
+
+        <p:password value="#{authBB.password}"
+                    placeholder="Password"
+                    required="true"
+                    style="width:100%"/>
+
+        <br/><br/>
+
+        <p:commandButton value="Create account"
+                         action="#{authBB.register}"
+                         ajax="false"
+                         style="width:100%"/>
+
+        <br/><br/>
+
+        <p:commandButton value="Back"
+                         ajax="false"
+                         immediate="true"
+                         action="/pages/login.xhtml?faces-redirect=true"
+                         styleClass="ui-button-secondary"
+                         style="width:100%"/>
+
+    </h:form>
+
+</h:body>
+</html>

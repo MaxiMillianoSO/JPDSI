@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="jakarta.faces.html"
+      xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+    <title>Login</title>
+</h:head>
+
+<h:body>
+
+    <h:form style="width:300px;margin:100px auto;text-align:center">
+
+        <h2>Login</h2>
+
+        <p:inputText value="#{authBB.username}"
+                     placeholder="Username"
+                     required="true"
+                     style="width:100%"/>
+
+        <br/><br/>
+
+        <p:password value="#{authBB.password}"
+                    placeholder="Password"
+                    required="true"
+                    style="width:100%"/>
+
+        <br/><br/>
+
+        <p:commandButton value="Login"
+                         action="#{authBB.login}"
+                         ajax="false"
+                         style="width:100%"/>
+
+        <br/><br/>
+
+        <p:commandButton value="Register"
+                         ajax="false"
+                         immediate="true"
+                         action="/pages/register.xhtml?faces-redirect=true"
+                         styleClass="ui-button-secondary"
+                         style="width:100%"/>
+
+    </h:form>
+
+</h:body>
+</html>

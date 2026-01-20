@@ -1,0 +1,58 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="jakarta.faces.html"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:ui="jakarta.faces.facelets"
+                xmlns:f="jakarta.faces.core">
+    <f:metadata>
+        <f:viewParam name="id" value="#{editPostBB.id}" />
+        <f:viewAction action="#{editPostBB.load}" />
+    </f:metadata>
+
+    <h:head>
+        <title>Edit post</title>
+        <h:outputStylesheet library="css" name="style.css" />
+    </h:head>
+
+    <h:body>
+
+        <ui:include src="/templates/header.xhtml" />
+
+        <div class="page-content">
+
+            <h:link value="← Back"
+                    outcome="/pages/myPosts.xhtml" />
+
+            <h2>Edit post</h2>
+
+            <h:form>
+
+                <p:inputText value="#{editPostBB.post.title}"
+                             maxlength="60"
+                             required="true"
+                             style="width:100%"/>
+
+                <br/><br/>
+
+                <p:inputText value="#{editPostBB.post.subtitle}"
+                             maxlength="150"
+                             required="true"
+                             style="width:100%"/>
+
+                <br/><br/>
+
+                <p:inputTextarea value="#{editPostBB.post.content}"
+                                 autoResize="true"
+                                 style="width:100%"/>
+
+                <br/><br/>
+
+                <p:commandButton value="Save changes"
+                                 ajax="false"
+                                 action="#{editPostBB.save}"/>
+
+            </h:form>
+
+        </div>
+
+    </h:body>
+</ui:composition>

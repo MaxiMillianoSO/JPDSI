@@ -1,0 +1,72 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="jakarta.faces.html"
+                xmlns:ui="jakarta.faces.facelets"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:f="jakarta.faces.core">
+
+    <h:head>
+        <title>Forum</title>
+        <h:outputStylesheet library="css" name="style.css" />
+    </h:head>
+
+    <h:body>
+
+        <ui:include src="/templates/header.xhtml" />
+
+        <div class="page-content">
+
+            <h1>All posts</h1>
+
+            <h:form id="searchForm">
+
+                <!-- LIVE SEARCH -->
+                <p:inputText value="#{postListBB.search}"
+                             placeholder="Search by title..."
+                             style="width:100%">
+                    <p:ajax event="keyup"
+                            delay="300"
+                            update="searchForm:postsTable"
+                            listener="#{postListBB.load}" />
+                </p:inputText>
+
+                <br/><br/>
+
+                <!-- POSTS LIST -->
+                <p:dataView id="postsTable"
+                            value="#{postListBB.posts}"
+                            var="post"
+                            layout="list"
+                            rows="5"
+                            paginator="true"
+                            paginatorPosition="bottom">
+
+                      <p:dataViewListItem>
+
+                        <div style="border:1px solid #ddd;
+                                    padding:15px;
+                                    margin-bottom:15px;
+                                    border-radius:6px">
+
+                            <h2>
+                                <h:link value="#{post.title}"
+                                        outcome="/pages/post.xhtml">
+                                    <f:param name="id" value="#{post.id}" />
+                                </h:link>
+                            </h2>
+
+                            <h4 style="color:#555">
+                                #{post.subtitle}
+                            </h4>
+
+                        </div>
+
+                      </p:dataViewListItem>
+
+                </p:dataView>
+
+            </h:form>
+
+        </div>
+
+    </h:body>
+</ui:composition>

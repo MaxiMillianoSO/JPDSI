@@ -1,0 +1,14 @@
+com\mn\forum\entities\User.class
+jakarta\faces\simplesecurity\RemoteClient.class
+jakarta\faces\simplesecurity\SecurityFilter.class
+com\mn\forum\bb\AuthBB.class
+com\mn\forum\bb\PostBB.class
+com\mn\forum\bb\PostViewBB.class
+com\mn\forum\bb\CreatePostBB.class
+com\mn\forum\bb\PostListBB.class
+com\mn\forum\bb\EditPostBB.class
+com\mn\forum\bb\MyPostsBB.class
+com\mn\forum\dao\PostDAO.class
+com\mn\forum\entities\Post.class
+com\mn\forum\dao\UserDAO.class
+com\mn\forum\entities\Role.class

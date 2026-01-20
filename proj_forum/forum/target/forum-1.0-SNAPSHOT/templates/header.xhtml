@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="jakarta.faces.html"
+      xmlns:p="http://primefaces.org/ui">
+
+<h:body>
+
+    <h:form styleClass="header">
+
+        <div class="header-center">
+            <p:commandButton value="All posts"
+                             ajax="false"
+                             action="/pages/index.xhtml?faces-redirect=true"
+                             rendered="#{authBB.loggedIn}" />
+
+            <p:commandButton value="My posts"
+                             ajax="false"
+                             action="/pages/myPosts.xhtml?faces-redirect=true"
+                             rendered="#{authBB.loggedIn}" />
+        </div>
+
+        <div class="header-right">
+            <p:commandButton value="PL"
+                             disabled="true" />
+
+            <p:commandButton value="ENG"
+                             disabled="true" />
+
+            <p:commandButton value="Login"
+                             ajax="false"
+                             action="/pages/login.xhtml?faces-redirect=true"
+                             rendered="#{!authBB.loggedIn}" />
+
+            <p:commandButton value="Logout"
+                             ajax="false"
+                             action="#{authBB.logout}"
+                             rendered="#{authBB.loggedIn}" />
+        </div>
+
+    </h:form>
+
+</h:body>
+</html>

@@ -1,0 +1,36 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="jakarta.faces.html"
+                xmlns:f="jakarta.faces.core"
+                xmlns:ui="jakarta.faces.facelets">
+
+    <h:head>
+        <title>Post</title>
+        <h:outputStylesheet library="css" name="style.css" />
+    </h:head>
+
+    <h:body>
+
+        <ui:include src="/templates/header.xhtml" />
+
+        <div class="page-content">
+
+            <h:link value="← Back"
+                    outcome="/pages/index.xhtml" />
+
+            <h1>#{postViewBB.post.title}</h1>
+            <h3 style="color:#666">#{postViewBB.post.subtitle}</h3>
+
+            <div style="margin-top:20px; white-space: pre-line;">
+                #{postViewBB.post.content}
+            </div>
+
+            <p style="margin-top:30px;color:#777">
+                Created by
+                #{postViewBB.post.author.firstName}
+                #{postViewBB.post.author.lastName}
+            </p>
+
+        </div>
+
+    </h:body>
+</ui:composition>
